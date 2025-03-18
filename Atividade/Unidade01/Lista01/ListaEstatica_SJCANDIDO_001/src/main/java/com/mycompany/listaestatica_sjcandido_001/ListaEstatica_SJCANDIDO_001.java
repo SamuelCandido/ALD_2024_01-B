@@ -40,11 +40,16 @@ public class ListaEstatica_SJCANDIDO_001 {
         info = novo;
     }
 
-    public void inserir(int valor){
+    public void inserir(int valor) {
         if (tamanho == info.length) {
-            redimencionar();
+            redimensionar();
         }
-        info[tamanho] = valor;
+        int i = tamanho - 1;        
+        while (i >= 0 && info[i] > valor) {
+            info[i + 1] = info[i];
+            i--;
+        }        
+        info[i + 1] = valor;
         tamanho++;
     }
 

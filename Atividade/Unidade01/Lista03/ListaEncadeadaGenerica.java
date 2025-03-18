@@ -119,6 +119,28 @@ public class ListaEncadeadaGenerica<T> {
         }
         return invertida;
     }
+
+    public ListaDupla<T> clonar() {
+        ListaDupla<T> clone = new ListaDupla<>();
+        NoLista<T> atual = this.primeiro;
+        NoListaDupla<T> ultimo = null;
+
+        while (atual != null) {
+            NoListaDupla<T> novo = new NoListaDupla<T>();
+            novo.setInfo(atual.getInfo());
+
+            if (clone.getPrimeiro() == null) {
+                clone.setPrimeiro(novo);
+            } 
+            else {
+                ultimo.setProximo(novo); 
+                novo.setAnterior(ultimo);
+            }
+            ultimo = novo;
+            atual = atual.getProximo();
+        }
+        return clone;
+    }
 }
 
 
